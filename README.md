@@ -37,7 +37,7 @@ The application is dependent on the following text files which it reads from:
 
 The application’s code includes 4 functions which the main function calls as follows:
 
-```
+```ruby
 def main():
     configs = inputs()
     cleaner1(configs)
@@ -47,7 +47,7 @@ def main():
 
 1.	The inputs() function utilizes the [argparse](https://docs.python.org/3/library/argparse.html) library to take in the previously mentioned arguments from the user. It’s also configured to provide descriptions of each parameter and its limitations by invoking help.
 
-```
+```ruby
 def inputs():
     parser = argparse.ArgumentParser(
         description=("Generate Cisco SD-WAN Initial Configuration")
@@ -73,7 +73,7 @@ def inputs():
 
 2.	The cleaner1(args) function takes in the arguments namespace provided by the inputs() function and checks whether all the required parameters are inserted by the user or not.
 
-```
+```ruby
 def cleaner1(args):
     l = [args.t, args.n, args.s, args.i, args.o, args.v, args.p, args.d, args.l, args.g]
     # Test if all required arguments were inserted by the user.
@@ -88,7 +88,7 @@ def cleaner1(args):
 
 3.	The cleaner2(args) function takes in the arguments namespace provided by the inputs() function, checks the device type specified, performs input-error checking on those arguments, and alters the Local IP Address depending on the device type parameter. This function returns a list of the input arguments in a specific order.
 
-```
+```ruby
 def cleaner2(args):
     l = [args.t, args.n, args.s, args.i, args.o, args.v, args.p, args.d, args.l, args.g]
     try:
@@ -158,7 +158,7 @@ def cleaner2(args):
     - Sometimes a line may be skipped because an optional argument wasn’t specified (such as the Port Offset or the DNS). When this occurs, the line is not appended to the output list.
     - Finally, the function takes the output list and creates a new text file (or overwrites a previously created one) “output.txt” with the initial configuration of the SD-WAN device using a for loop.
 
-```
+```ruby
 def create_txt(conf):
     out = []
     k = 1
