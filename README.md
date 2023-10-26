@@ -1,9 +1,12 @@
 # SD-WAN Device Initial Configuration Generator
-#### Video Demo: https://youtu.be/pgDuOtlAg5Q
-#### Description:
+
+## Description:
+
 The [SD-WAN](https://www.cisco.com/c/en_ph/solutions/enterprise-networks/sd-wan/index.html) Device Initial Configuration Generator is an application that creates a text file which contains the initial configuration required for a Cisco SD-WAN device to be able to on-board to the SD-WAN network.
 
 The application works by taking in multiple required and optional arguments from the user which it then uses to create an altered version of one of the input text files (depending on the device type argument specified). The altered version is saved as “output.txt” and rewritten every time the code is executed.
+
+To view the source code, click [here](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/project.py) or to view a demo of the application, [here](https://youtu.be/YAkpe-EeDdY).
 
 The application supports configuring the following devices:
 - vSmart Controller
@@ -23,13 +26,17 @@ The application supports configuring the following parameters:
 - Gateway IP Address
 
 The application is dependent on the following text files which it reads from:
-- vsmart.txt
-- vbond.txt
-- vmanage.txt
-- csr.txt
+- [vsmart.txt](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/vsmart.txt)
+- [vbond.txt](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/vbond.txt)
+- [vmanage.txt](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/vmanage.txt)
+- [csr.txt](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/csr.txt)
 
-The application’s code includes 4 functions (excluding the main function):
-The main function calls these 4 functions as follows:
+[test_project.py](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/test_project.py) is code written to test the project's code using the pytest framework. It's supplied with commentary sufficient to allow the reader to understand what exactly is being tested.
+
+## How it Works:
+
+The application’s code includes 4 functions which the main function calls as follows:
+
 ```
 def main():
     configs = inputs()
@@ -37,7 +44,9 @@ def main():
     configs_clean = cleaner2(configs)
     create_txt(configs_clean)
 ```
-1.	The inputs() function utilizes the argparse library to take in the previously mentioned arguments from the user. It’s also configured to provide descriptions of each parameter and its limitations by invoking help.
+
+1.	The inputs() function utilizes the [argparse](https://docs.python.org/3/library/argparse.html) library to take in the previously mentioned arguments from the user. It’s also configured to provide descriptions of each parameter and its limitations by invoking help.
+
 ```
 def inputs():
     parser = argparse.ArgumentParser(
@@ -61,7 +70,9 @@ def inputs():
     args = parser.parse_args()
     return args
 ```
+
 2.	The cleaner1(args) function takes in the arguments namespace provided by the inputs() function and checks whether all the required parameters are inserted by the user or not.
+
 ```
 def cleaner1(args):
     l = [args.t, args.n, args.s, args.i, args.o, args.v, args.p, args.d, args.l, args.g]
@@ -74,7 +85,9 @@ def cleaner1(args):
             sys.exit("Missing Arguments")
     return True
 ```
+
 3.	The cleaner2(args) function takes in the arguments namespace provided by the inputs() function, checks the device type specified, performs input-error checking on those arguments, and alters the Local IP Address depending on the device type parameter. This function returns a list of the input arguments in a specific order.
+
 ```
 def cleaner2(args):
     l = [args.t, args.n, args.s, args.i, args.o, args.v, args.p, args.d, args.l, args.g]
@@ -132,6 +145,7 @@ def cleaner2(args):
         )
     return l
 ```
+
 4.	The create_txt(conf) function does the following:
     - It takes in the ordered list of arguments.
     - It checks the specified device type.
@@ -143,6 +157,7 @@ def cleaner2(args):
     - Depending on the line, a “&” is removed or an argument is added (or a “_” is replaced for the vBond Orchestrator). The output of this line is then appended into a list.
     - Sometimes a line may be skipped because an optional argument wasn’t specified (such as the Port Offset or the DNS). When this occurs, the line is not appended to the output list.
     - Finally, the function takes the output list and creates a new text file (or overwrites a previously created one) “output.txt” with the initial configuration of the SD-WAN device using a for loop.
+
 ```
 def create_txt(conf):
     out = []
