@@ -29,6 +29,14 @@ The application is dependent on the following text files which it reads from:
 - csr.txt
 
 The application’s code includes 4 functions (excluding the main function):
+The main function calls these 4 functions as follows:
+```
+def main():
+    configs = inputs()
+    cleaner1(configs)
+    configs_clean = cleaner2(configs)
+    create_txt(configs_clean)
+```
 1.	The inputs() function utilizes the argparse library to take in the previously mentioned arguments from the user. It’s also configured to provide descriptions of each parameter and its limitations by invoking help.
 ```
 def inputs():
@@ -180,12 +188,4 @@ def create_txt(conf):
     with open("output.txt", "w") as test:
         for i in out:
             test.write(i)
-```
-The main function calls the previously mentioned functions as follows:
-```
-def main():
-    configs = inputs()
-    cleaner1(configs)
-    configs_clean = cleaner2(configs)
-    create_txt(configs_clean)
 ```
