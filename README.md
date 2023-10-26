@@ -45,7 +45,7 @@ def main():
     create_txt(configs_clean)
 ```
 
-1.	The inputs() function utilizes the [argparse](https://docs.python.org/3/library/argparse.html) library to take in the previously mentioned arguments from the user. It’s also configured to provide descriptions of each parameter and its limitations by invoking help.
+-	The inputs() function utilizes the [argparse](https://docs.python.org/3/library/argparse.html) library to take in the previously mentioned arguments from the user. It’s also configured to provide descriptions of each parameter and its limitations by invoking help.
 
 ```ruby
 def inputs():
@@ -71,7 +71,7 @@ def inputs():
     return args
 ```
 
-2.	The cleaner1(args) function takes in the arguments namespace provided by the inputs() function and checks whether all the required parameters are inserted by the user or not.
+-	The cleaner1(args) function takes in the arguments namespace provided by the inputs() function and checks whether all the required parameters are inserted by the user or not.
 
 ```ruby
 def cleaner1(args):
@@ -86,7 +86,7 @@ def cleaner1(args):
     return True
 ```
 
-3.	The cleaner2(args) function takes in the arguments namespace provided by the inputs() function, checks the device type specified, performs input-error checking on those arguments, and alters the Local IP Address depending on the device type parameter. This function returns a list of the input arguments in a specific order.
+-	The cleaner2(args) function takes in the arguments namespace provided by the inputs() function, checks the device type specified, performs input-error checking on those arguments, and alters the Local IP Address depending on the device type parameter. This function returns a list of the input arguments in a specific order.
 
 ```ruby
 def cleaner2(args):
@@ -146,7 +146,7 @@ def cleaner2(args):
     return l
 ```
 
-4.	The create_txt(conf) function does the following:
+-	The create_txt(conf) function does the following:
     - It takes in the ordered list of arguments.
     - It checks the specified device type.
     - Depending on the specified device type, it iterates over its lines.
