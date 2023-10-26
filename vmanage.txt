@@ -1,0 +1,19 @@
+config terminal&
+system&
+host-name
+system-ip
+site-id
+organization-name
+vbond
+port-offset
+vpn 0&
+dns
+int eth0&
+no shutdown&
+ip add
+tunnel-interface&
+allow-service all&
+exit&
+exit&
+ip route 0.0.0.0/0
+commit and-quit&

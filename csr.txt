@@ -1,0 +1,32 @@
+enable&
+config-transaction&
+hostname
+system&
+system-ip
+site-id
+organization-name
+vbond
+system port-offset
+commit&
+exit&
+ip name-server
+interface GigabitEthernet 1&
+ip address
+no shutdown&
+ip route 0.0.0.0 0.0.0.0
+commit&
+interface Tunnel1&
+ip unnumbered GigabitEthernet1&
+tunnel source GigabitEthernet1&
+tunnel mode sdwan&
+no shutdown&
+commit&
+sdwan&
+interface GigabitEthernet1&
+tunnel-interface&
+encapsulation ipsec&
+color biz-internet&
+allow-service sshd&
+allow-service netconf&
+commit&
+end&
