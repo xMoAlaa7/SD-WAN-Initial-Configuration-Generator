@@ -6,7 +6,7 @@ The [SD-WAN](https://www.cisco.com/c/en_ph/solutions/enterprise-networks/sd-wan/
 
 The application works by taking in multiple required and optional arguments from the user which it then uses to create an altered version of one of the input text files (depending on the device type argument specified). The altered version is saved as “output.txt” and rewritten every time the code is executed.
 
-To view the source code, click [here](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/project.py) or to view a demo of the application, [here](https://youtu.be/YAkpe-EeDdY).
+To view the source code, click [here](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/project.py).
 
 The application supports configuring the following devices:
 - vSmart Controller
