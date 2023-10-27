@@ -1,12 +1,22 @@
 # SD-WAN Device Initial Configuration Generator
 
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+</div>
+
+<!-- Tab content -->
+<div id="London" class="tabcontent">
+
 ## Description:
 
 The [SD-WAN](https://www.cisco.com/c/en_ph/solutions/enterprise-networks/sd-wan/index.html) Device Initial Configuration Generator is a **Python** application that creates a text file which contains the initial configuration required for a Cisco SD-WAN device to be able to on-board to the SD-WAN network.
 
 The application works by taking in multiple required and optional arguments from the user which it then uses to create an altered version of one of the input text files (depending on the device type argument specified). The altered version is saved as “output.txt” and rewritten every time the code is executed.
 
-To view the source code, click [here](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/project.py).
+To view the source code, click [here](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/project.py) or to view a demo of the application, [here](https://youtu.be/YAkpe-EeDdY).
 
 The application supports configuring the following devices:
 - vSmart Controller
@@ -33,6 +43,10 @@ The application is dependent on the following text files which it reads from:
 
 >[test_project.py](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/test_project.py) is code written to test the project's code using the [pytest](https://docs.pytest.org/en/7.4.x/) framework. It's supplied with commentary sufficient to allow the reader to understand what exactly is being tested.
 
+</div>
+
+<div id="Paris" class="tabcontent">
+
 ## How it Works:
 
 The application’s code includes 4 functions which the main function calls as follows:
@@ -45,7 +59,7 @@ def main():
     create_txt(configs_clean)
 ```
 
--	The inputs() function utilizes the [argparse](https://docs.python.org/3/library/argparse.html) library to take in the previously mentioned arguments from the user. It’s also configured to provide descriptions of each parameter and its limitations by invoking help.
+-	The <span style="color:#13A5A6">inputs()</span> function utilizes the [argparse](https://docs.python.org/3/library/argparse.html) library to take in the previously mentioned arguments from the user. It’s also configured to provide descriptions of each parameter and its limitations by invoking help.
 
 ```ruby
 def inputs():
@@ -71,7 +85,7 @@ def inputs():
     return args
 ```
 
--	The cleaner1(args) function takes in the arguments namespace provided by the inputs() function and checks whether all the required parameters are inserted by the user or not.
+-	The <span style="color:#13A5A6">cleaner1(args)</span> function takes in the arguments namespace provided by the inputs() function and checks whether all the required parameters are inserted by the user or not.
 
 ```ruby
 def cleaner1(args):
@@ -85,7 +99,7 @@ def cleaner1(args):
     return True
 ```
 
--	The cleaner2(args) function takes in the arguments namespace provided by the inputs() function, checks the device type specified, performs input-error checking on those arguments, and alters the Local IP Address depending on the device type parameter. This function returns a list of the input arguments in a specific order.
+-	The <span style="color:#13A5A6">cleaner2(args)</span> function takes in the arguments namespace provided by the inputs() function, checks the device type specified, performs input-error checking on those arguments, and alters the Local IP Address depending on the device type parameter. This function returns a list of the input arguments in a specific order.
 
 ```ruby
 def cleaner2(args):
@@ -145,7 +159,7 @@ def cleaner2(args):
     return l
 ```
 
--	The create_txt(conf) function does the following:
+-	The <span style="color:#13A5A6">create_txt(conf)</span> function does the following:
     - It takes in the ordered list of arguments.
     - It checks the specified device type.
     - Depending on the specified device type, it iterates over its lines.
@@ -204,6 +218,10 @@ def create_txt(conf):
             test.write(i)
 ```
 
+</div>
+
+<div id="Tokyo" class="tabcontent">
+
 ## Testing:
 In the terminal window, execute the following:
 ```
@@ -246,3 +264,5 @@ allow-service netconf
 commit
 end
 ```
+
+</div>
