@@ -45,7 +45,7 @@ def main():
     create_txt(configs_clean)
 ```
 
--	The inputs() function utilizes the [argparse](https://docs.python.org/3/library/argparse.html) library to take in the previously mentioned arguments from the user. It’s also configured to provide descriptions of each parameter and its limitations by invoking help.
+1.	The inputs() function utilizes the [argparse](https://docs.python.org/3/library/argparse.html) library to take in the previously mentioned arguments from the user. It’s also configured to provide descriptions of each parameter and its limitations by invoking help.
 
 ```ruby
 def inputs():
@@ -71,13 +71,12 @@ def inputs():
     return args
 ```
 
--	The cleaner1(args) function takes in the arguments namespace provided by the inputs() function and checks whether all the required parameters are inserted by the user or not.
+2.	The cleaner1(args) function takes in the arguments namespace provided by the inputs() function and checks whether all the required parameters are inserted by the user or not.
 
 ```ruby
 def cleaner1(args):
     l = [args.t, args.n, args.s, args.i, args.o, args.v, args.p, args.d, args.l, args.g]
     # Test if all required arguments were inserted by the user.
-    print(l)
     for i in l:
         if i:
             continue
@@ -86,7 +85,7 @@ def cleaner1(args):
     return True
 ```
 
--	The cleaner2(args) function takes in the arguments namespace provided by the inputs() function, checks the device type specified, performs input-error checking on those arguments, and alters the Local IP Address depending on the device type parameter. This function returns a list of the input arguments in a specific order.
+3.	The cleaner2(args) function takes in the arguments namespace provided by the inputs() function, checks the device type specified, performs input-error checking on those arguments, and alters the Local IP Address depending on the device type parameter. This function returns a list of the input arguments in a specific order.
 
 ```ruby
 def cleaner2(args):
@@ -146,7 +145,7 @@ def cleaner2(args):
     return l
 ```
 
--	The create_txt(conf) function does the following:
+4.	The create_txt(conf) function does the following:
     - It takes in the ordered list of arguments.
     - It checks the specified device type.
     - Depending on the specified device type, it iterates over its lines.
@@ -203,4 +202,47 @@ def create_txt(conf):
     with open("output.txt", "w") as test:
         for i in out:
             test.write(i)
+```
+
+## Testing:
+In the terminal window, execute the following:
+```
+python project.py -t csr -n CSR-1 -s 4.4.4.4 -i 100 -o TEST -v test.ddns.net -l 192.168.1.201/24 -g 192.168.1.1 -p 0 -d 8.8.8.8
+```
+
+A new text file named "output.txt" will be created/replaced. Its contents will be as follows:
+
+```
+enable
+config-transaction
+hostname CSR-1
+system
+system-ip 4.4.4.4
+site-id 100
+organization-name TEST
+vbond test.ddns.net
+system port-offset 0
+commit
+exit
+ip name-server 8.8.8.8
+interface GigabitEthernet 1
+ip address 192.168.1.201 255.255.255.0
+no shutdown
+ip route 0.0.0.0 0.0.0.0 192.168.1.1
+commit
+interface Tunnel1
+ip unnumbered GigabitEthernet1
+tunnel source GigabitEthernet1
+tunnel mode sdwan
+no shutdown
+commit
+sdwan
+interface GigabitEthernet1
+tunnel-interface
+encapsulation ipsec
+color biz-internet
+allow-service sshd
+allow-service netconf
+commit
+end
 ```
