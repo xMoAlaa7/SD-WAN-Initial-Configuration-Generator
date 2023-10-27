@@ -2,7 +2,7 @@
 
 ## Description:
 
-The [SD-WAN](https://www.cisco.com/c/en_ph/solutions/enterprise-networks/sd-wan/index.html) Device Initial Configuration Generator is an application that creates a text file which contains the initial configuration required for a Cisco SD-WAN device to be able to on-board to the SD-WAN network.
+The [SD-WAN](https://www.cisco.com/c/en_ph/solutions/enterprise-networks/sd-wan/index.html) Device Initial Configuration Generator is a **Python** application that creates a text file which contains the initial configuration required for a Cisco SD-WAN device to be able to on-board to the SD-WAN network.
 
 The application works by taking in multiple required and optional arguments from the user which it then uses to create an altered version of one of the input text files (depending on the device type argument specified). The altered version is saved as “output.txt” and rewritten every time the code is executed.
 
