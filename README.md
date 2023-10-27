@@ -1,15 +1,5 @@
 # SD-WAN Device Initial Configuration Generator
 
-<!-- Tab links -->
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')">London</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-</div>
-
-<!-- Tab content -->
-<div id="London" class="tabcontent">
-
 ## Description:
 
 The [SD-WAN](https://www.cisco.com/c/en_ph/solutions/enterprise-networks/sd-wan/index.html) Device Initial Configuration Generator is a **Python** application that creates a text file which contains the initial configuration required for a Cisco SD-WAN device to be able to on-board to the SD-WAN network.
@@ -42,10 +32,6 @@ The application is dependent on the following text files which it reads from:
 - [csr.txt](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/csr.txt)
 
 >[test_project.py](https://github.com/xMoAlaa7/SD-WAN-Initial-Configuration-Generator/blob/2de1cc55c4fdd676b7a6ef6710a24c0cf566f711/test_project.py) is code written to test the project's code using the [pytest](https://docs.pytest.org/en/7.4.x/) framework. It's supplied with commentary sufficient to allow the reader to understand what exactly is being tested.
-
-</div>
-
-<div id="Paris" class="tabcontent">
 
 ## How it Works:
 
@@ -218,10 +204,6 @@ def create_txt(conf):
             test.write(i)
 ```
 
-</div>
-
-<div id="Tokyo" class="tabcontent">
-
 ## Testing:
 In the terminal window, execute the following:
 ```
@@ -264,5 +246,3 @@ allow-service netconf
 commit
 end
 ```
-
-</div>
