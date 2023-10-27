@@ -37,7 +37,6 @@ def inputs():
 def cleaner1(args):
     l = [args.t, args.n, args.s, args.i, args.o, args.v, args.p, args.d, args.l, args.g]
     # Test if all required arguments were inserted by the user.
-    print(l)
     for i in l:
         if i:
             continue
